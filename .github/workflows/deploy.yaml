@@ -1,0 +1,50 @@
+name: Deploy Portfolio
+
+# workflow trigger on
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+
+# jobs
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Node Set up
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Check Types
+        run: npx tsc -b
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Back up
+        if: github.ref == 'refs/heads/main'
+        run: |
+          rm -rf /var/www/portfolio-backup/
+          if [ -d /var/www/portfolio ]; then
+            cp -r /var/www/portfolio/. /var/www/portfolio-backup/
+          fi
+
+      - name: Deploy new build
+        if: github.ref == 'refs/heads/main'
+        run: |
+          rm -rf /var/www/portfolio/*
+          cp -r dist/* /var/www/portfolio/
