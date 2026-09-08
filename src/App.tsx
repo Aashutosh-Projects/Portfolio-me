@@ -1,12 +1,12 @@
 import './App.css'
+import Header from './components/header'
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <h1>Welcome to my portfolio.</h1>
-      <h2>HI I AM AASHUTOSH.</h2>
+    <div className='bg-terminal-bg text-accent font-mono p-8'>
+      <Header/>
     </div>  
   )
 }
