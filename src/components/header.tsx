@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 // defining interface for the nav items
 interface NavItem{
@@ -9,38 +10,76 @@ interface NavItem{
 
 // items in the navbar
 const navLinks: NavItem[] = [
-    // {label: 'guest@portfolio', path: '#home'}
-    {label: 'home', path: '#home'},
-    {label: 'projects', path: '#projects'},
-    {label: 'about', path: '#about'},
-    {label: 'contact', path: '#contact'},
+    // applying multi-page routing
+    {label: 'home', path: '/'},
+    {label: 'projects', path: '/projects'},
+    {label: 'about', path: '/about'},
+    {label: 'contact', path: '/contact'},
 ]
 
 export default function Header() {
-    // hamburger or menu status
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return(
-        <header className="flex items-center justify-between p-4 bg-terminal-bg">
+        <header className="border-b border-terminal-border bg-terminal-bg">
             {/* user name */}
-            <div className="font-mono text-accent">
-                guest@portfolio:~$
-            </div>
+            <div className="flex items-center justify-between p-4">
+                <Link to="/" className="font-mono text-accent text-sm sm:text-base">
+                    guest@portfolio:~$
+                </Link>
 
-            <nav>
-                <ul className="flex itmes-center gap-6">
-                    {
-                        navLinks.map(
-                            (item) => (
+                <nav className="hidden sm:block">
+                   <ul className="flex items-center gap-6">
+                        {navLinks.map((item) => {
+                        return (
+                            <li key={item.path}>
+                            <NavLink
+                                to={item.path}
+                                className={({isActive}) => `font-mono transition-colors ${
+                                isActive
+                                    ? 'text-accent'
+                                    : 'text-terminal-text-dim hover:text-terminal-text-bright'
+                                }`}
+                            >
+                                {item.label}
+                            </NavLink>
+                            </li>
+                        );
+                        })}
+                    </ul>
+                </nav>
+
+                {/* mobile menu toggle */}
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)}className="sm:hidden font-mono text-terminal-text-dim" arial-lable="Toggle Menu">
+                    {isMenuOpen ? '[x]': '[≡]'}
+                </button>
+
+            </div>
+            
+            {/* mobile nav */}
+            {
+                isMenuOpen && (
+                    <nav className="sm:hidden border-t border-terminal-border">
+                        <ul className="flex flex-col p-4 gap-4">
+                            {navLinks.map((item) => {
+                            return (
                                 <li key={item.path}>
-                                    <a href={item.path} className="text-terminal-text-dim font-mono hover:text-terminal-text-bright transition-colors">
-                                        {item.label}
-                                    </a>
+                                <NavLink
+                                    to={item.path}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className={({isActive}) => `font-mono ${
+                                    isActive ? 'text-accent' : 'text-terminal-text-dim'
+                                    }`}
+                                >
+                                    {item.label}
+                                </NavLink>
                                 </li>
-                            )
-                        )
-                    }
-                </ul>
-            </nav>
+                            );
+                            })}
+                        </ul>
+                     </nav>
+                )
+            }
 
         </header>
     )
