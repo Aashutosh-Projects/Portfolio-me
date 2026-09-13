@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, NavLink } from 'react-router-dom';
 
 // defining interface for the nav items
 interface NavItem{
     label: string;
     path: string;
-    // isExternal?: boolean;
 }
 
 // items in the navbar
@@ -19,6 +18,12 @@ const navLinks: NavItem[] = [
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
+
+    // closing the menu on back button use
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [location.pathname]);    
 
     return(
         <header className="border-b border-terminal-border bg-terminal-bg">
@@ -38,7 +43,7 @@ export default function Header() {
                                 className={({isActive}) => `font-mono transition-colors ${
                                 isActive
                                     ? 'text-accent'
-                                    : 'text-terminal-text-dim hover:text-terminal-text-bright'
+                                    : 'text-terminal-text-dim hover:text-terminal-text-bright focus-visible:text-terminal-text-bright'
                                 }`}
                             >
                                 {item.label}
@@ -50,7 +55,7 @@ export default function Header() {
                 </nav>
 
                 {/* mobile menu toggle */}
-                <button onClick={() => setIsMenuOpen(!isMenuOpen)}className="sm:hidden font-mono text-terminal-text-dim" arial-lable="Toggle Menu">
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="sm:hidden font-mono text-terminal-text-dim" arial-label="Toggle Menu">
                     {isMenuOpen ? '[x]': '[≡]'}
                 </button>
 
