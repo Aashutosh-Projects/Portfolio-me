@@ -1,16 +1,19 @@
 import './App.css'
-import Header from './components/header'
-import Footer from './components/footer'
+import { Routes, Route } from "react-router-dom";
+import Layout from './components/layout';
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
-    <div className='bg-terminal-bg text-accent font-mono p-8'>
-      <Header/>
-      <Footer/>
-    </div>  
-  )
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<div>Home Page</div>}></Route>
+        <Route path="projects" element={<div>Project Page</div>}></Route>
+        <Route path="about" element={<div>About Page</div>}></Route>
+        <Route path="contact" element={<div>Contact Page</div>}></Route>
+      </Route>
+    </Routes>
+  );
 }
 
 export default App

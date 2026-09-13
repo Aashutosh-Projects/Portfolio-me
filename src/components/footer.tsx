@@ -4,9 +4,9 @@ interface SocialLink {
 }
 
 const socialLinks: SocialLink[] = [
-    {label: "github", link: ""},
-    {label: "linkedin", link: ""},
-    {label: "email", link: ""}
+    {label: "github", link: "https://github.com/Aashutosh347777"},
+    {label: "linkedin", link: "https://www.linkedin.com/in/aashutosh-bista-1946892a1/"},
+    {label: "email", link: "mailto:aashutoshbista998@gmail.com"}
 ];
 
 export default function Footer() {
