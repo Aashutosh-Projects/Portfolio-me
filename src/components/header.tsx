@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, NavLink } from 'react-router-dom';
 
 // defining interface for the nav items
@@ -17,13 +17,15 @@ const navLinks: NavItem[] = [
 ]
 
 export default function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [prevPathName, setPrevPathName] = useState(location.pathname);
 
-    // closing the menu on back button use
-    useEffect(() => {
-        setIsMenuOpen(false);
-    }, [location.pathname]);    
+    // changed approach for closing the menu on back button use
+    if (location.pathname !== prevPathName){
+        setPrevPathName(location.pathname)
+        setIsMenuOpen(false)
+    }
 
     return(
         <header className="border-b border-terminal-border bg-terminal-bg">
