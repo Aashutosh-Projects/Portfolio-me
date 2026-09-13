@@ -1,20 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation, NavLink } from 'react-router-dom';
-
-// defining interface for the nav items
-interface NavItem{
-    label: string;
-    path: string;
-}
-
-// items in the navbar
-const navLinks: NavItem[] = [
-    // applying multi-page routing
-    {label: 'home', path: '/'},
-    {label: 'projects', path: '/projects'},
-    {label: 'about', path: '/about'},
-    {label: 'contact', path: '/contact'},
-]
+import { siteConfig } from '../config/site';
 
 export default function Header() {
     const location = useLocation();
@@ -37,7 +23,7 @@ export default function Header() {
 
                 <nav className="hidden sm:block">
                    <ul className="flex items-center gap-6">
-                        {navLinks.map((item) => {
+                        {siteConfig.navLinks.map((item) => {
                         return (
                             <li key={item.path}>
                             <NavLink
@@ -68,7 +54,7 @@ export default function Header() {
                 isMenuOpen && (
                     <nav className="sm:hidden border-t border-terminal-border">
                         <ul className="flex flex-col p-4 gap-4">
-                            {navLinks.map((item) => {
+                            {siteConfig.navLinks.map((item) => {
                             return (
                                 <li key={item.path}>
                                 <NavLink

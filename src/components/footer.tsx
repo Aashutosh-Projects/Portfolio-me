@@ -1,13 +1,4 @@
-interface SocialLink {
-    label: string;
-    link : string;
-}
-
-const socialLinks: SocialLink[] = [
-    {label: "github", link: "https://github.com/Aashutosh347777"},
-    {label: "linkedin", link: "https://www.linkedin.com/in/aashutosh-bista-1946892a1/"},
-    {label: "email", link: "mailto:aashutoshbista998@gmail.com"}
-];
+import { siteConfig } from "../config/site";
 
 export default function Footer() {
     // define variables
@@ -23,7 +14,7 @@ export default function Footer() {
                 
                 <ul className="flex items-center gap-6">
                     {
-                        socialLinks.map((social) => {
+                        siteConfig.socials.map((social) => {
                             return (
                                 <li key = {social.label}>
                                     <a 
