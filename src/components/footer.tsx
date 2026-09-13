@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-interface SocialLinks {
+interface SocialLink {
     label: string;
     link : string;
 }
 
-const socialLinks: SocialLinks[] = [
+const socialLinks: SocialLink[] = [
     {label: "github", link: ""},
     {label: "linkedin", link: ""},
     {label: "email", link: ""}
@@ -29,7 +29,7 @@ export default function Footer() {
                             return (
                                 <li key = {social.label}>
                                     <a 
-                                    href={social.link} target={social.link.startsWith('http') ? '_blank' : undefined} rel={social.link.startsWith('http') ? 'noopener noreferre': undefined} className="text-terminal-text-dim hover:text-terminal-text-bright cous-visible:text-terminal-text-bright transition-colors"
+                                    href={social.link} target={social.link.startsWith('http') ? '_blank' : undefined} rel={social.link.startsWith('http') ? 'noopener noreferrer': undefined} className="text-terminal-text-dim hover:text-terminal-text-bright focus-visible:text-terminal-text-bright transition-colors"
                                     >
                                         {social.label}
                                     </a>
