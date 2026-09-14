@@ -1,7 +1,34 @@
-export const siteConfig = {
+interface NavLink {
+    label: string;
+    path: string;
+}
+
+interface Social {
+    label: string;
+    link: string;
+}
+
+interface Project {
+    slug: string;
+    title: string;
+    description: string;
+    tags : string[];
+    demoUrl: string;
+    githubUrl: string;
+    image?: string; 
+    featured: true
+}
+
+interface SiteConfig {
+    name: string;
+    role: string;
+    navLinks: NavLink[];
+    socials: Social[];
+    projects: Project[];
+}
+export const siteConfig: SiteConfig = {
     name: "Aashutosh Bista",
     role: "",
-    email: "aashutoshbista998@gmail.com",
     navLinks: [
         {label: 'home', path: '/'},
         {label: 'projects', path: '/projects'},
@@ -12,6 +39,29 @@ export const siteConfig = {
         {label: "github", link: "https://github.com/Aashutosh347777"},
         {label: "linkedin", link: "https://www.linkedin.com/in/aashutosh-bista-1946892a1/"},
         {label: "email", link: "mailto:aashutoshbista998@gmail.com"}
+    ],
+    projects: [
+        {
+            slug: "Project 1",
+            title: "Project 1",
+            description: "A simple project",
+            tags : ["Used stack 1","Used stack 2"],
+            demoUrl: "",
+            githubUrl: "",
+            image: "",
+            featured: true
+        },
+
+        {
+            slug: "Project 2",
+            title: "Project 2",
+            description: "A Complex project",
+            tags : ["Used stack 1","Used stack 2"],
+            demoUrl: "",
+            githubUrl: "",
+            image: "",
+            featured: true   
+        }
     ]
 
 }
