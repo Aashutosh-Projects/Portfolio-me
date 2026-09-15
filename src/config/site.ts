@@ -1,14 +1,14 @@
-interface NavLink {
+export interface NavLink {
     label: string;
     path: string;
 }
 
-interface Social {
+export interface Social {
     label: string;
     link: string;
 }
 
-interface Project {
+export interface Project {
     slug: string;
     title: string;
     description: string;
@@ -19,7 +19,7 @@ interface Project {
     featured: true
 }
 
-interface SiteConfig {
+export interface SiteConfig {
     name: string;
     role: string;
     navLinks: NavLink[];
