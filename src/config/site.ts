@@ -16,7 +16,7 @@ export interface Project {
     demoUrl: string;
     githubUrl: string;
     image?: string; 
-    featured: true
+    featured: boolean;
 }
 
 export interface SiteConfig {
@@ -65,13 +65,24 @@ export const siteConfig: SiteConfig = {
 
         {
             slug: "Project 3",
-            title: "Project 2",
+            title: "Project 3",
             description: "A decent project",
             tags : ["Used stack 1","Used stack 2"],
             demoUrl: "",
             githubUrl: "",
             image: "",
             featured: true  
+        },
+
+        {
+            slug: "Project 4",
+            title: "Project 4",
+            description: "A decent project",
+            tags : ["Used stack 1","Used stack 2"],
+            demoUrl: "",
+            githubUrl: "",
+            image: "",
+            featured: false  
         }
     ]
 
