@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 font-mono text-sm">
                 
                 <span className="text-terminal-text-dim">
-                    © {runningYear} Aashutosh Bista
+                    © {runningYear} {siteConfig.name}
                 </span>
                 
                 <ul className="flex items-center gap-6">

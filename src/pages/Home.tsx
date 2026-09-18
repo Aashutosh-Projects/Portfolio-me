@@ -1,10 +1,11 @@
 import ProjectCard from "../components/projectcard";
 import { siteConfig } from "../config/site";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const featuredProject = siteConfig.projects.filter((p) => p.featured);
     return (
-        <div className="max-w-5x1 mx-auto px-4 py-12">
+        <div className="px-4 py-12">
             <section className="mb-16">
                 <p className="font-mono text-terminal-text-dim text-sm mb-2">
                     $ whoami
@@ -27,7 +28,7 @@ export default function Home() {
                 </p>
                 
                 {featuredProject.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols2 lg:grid-cols3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {featuredProject.map((project) => (
                             <ProjectCard key={project.slug} project={project}/>
                         ))}
@@ -38,6 +39,9 @@ export default function Home() {
                     </p>   
                 )}
                 
+                <Link to="/projects" className="inline-block mt-6 font-mono text-terminal-text-dim hover:text-terminal-text-bright focus-visible:text-terminal-text-bright transition-colors text-sm">
+                   $ view all projects <span className="text-accent">→</span> 
+                </Link>
             </section>
            
         </div>

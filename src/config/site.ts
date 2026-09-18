@@ -28,7 +28,7 @@ export interface SiteConfig {
 }
 export const siteConfig: SiteConfig = {
     name: "Aashutosh Bista",
-    role: "",
+    role: "AI Learnee",
     navLinks: [
         {label: 'home', path: '/'},
         {label: 'projects', path: '/projects'},
@@ -61,6 +61,17 @@ export const siteConfig: SiteConfig = {
             githubUrl: "",
             image: "",
             featured: true   
+        },
+
+        {
+            slug: "Project 3",
+            title: "Project 2",
+            description: "A decent project",
+            tags : ["Used stack 1","Used stack 2"],
+            demoUrl: "",
+            githubUrl: "",
+            image: "",
+            featured: true  
         }
     ]
 
