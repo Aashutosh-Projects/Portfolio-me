@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import Layout from './components/layout';
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
+import ProjectDetails from './pages/ProjectDetails';
+
 function App() {
 
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="projects" element={<Projects />}></Route>
         <Route path="about" element={<div>About Page</div>}></Route>
         <Route path="contact" element={<div>Contact Page</div>}></Route>
+
+        <Route path="projects/:slug" element={<ProjectDetails />}></Route>
       </Route>
     </Routes>
   );

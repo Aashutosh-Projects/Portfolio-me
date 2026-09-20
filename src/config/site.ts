@@ -46,8 +46,8 @@ export const siteConfig: SiteConfig = {
             title: "Project 1",
             description: "A simple project",
             tags : ["Used stack 1","Used stack 2"],
-            demoUrl: "",
-            githubUrl: "",
+            demoUrl: "https://something",
+            githubUrl: "https://githuburl",
             image: "",
             featured: true
         },
@@ -84,6 +84,26 @@ export const siteConfig: SiteConfig = {
             image: "",
             featured: false  
         }
+    ]
+
+}
+
+export const siteConfig2: SiteConfig = {
+    name: "Aashutosh Bista",
+    role: "AI Learnee",
+    navLinks: [
+        {label: 'home', path: '/'},
+        {label: 'projects', path: '/projects'},
+        {label: 'about', path: '/about'},
+        {label: 'contact', path: '/contact'},
+    ],
+    socials: [
+        {label: "github", link: "https://github.com/Aashutosh347777"},
+        {label: "linkedin", link: "https://www.linkedin.com/in/aashutosh-bista-1946892a1/"},
+        {label: "email", link: "mailto:aashutoshbista998@gmail.com"}
+    ],
+    projects: [
+        
     ]
 
 }
